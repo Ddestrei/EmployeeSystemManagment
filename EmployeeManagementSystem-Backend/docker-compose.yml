@@ -1,0 +1,35 @@
+services:
+    postgres:
+        container_name: EmployeeManagementSystem-BackendPostgres
+        image: postgres
+        environment:
+          POSTGRES_USER: patryk
+          POSTGRES_PASSWORD: password
+          PGDATA: /data/EmployeeManagementSystem-BackendPostgres
+        ports:
+          - "5432:5432"
+        networks:
+          - postgres
+        restart: unless-stopped
+        volumes:
+          - postgres:/data/postgres
+    pgadmin:
+        container_name: EmployeeManagementSystem-BackendPgadmin
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: pgadmin@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: password
+            PGADMIN_DEFAULT_SERVER_MODE: 'false'
+        ports:
+            - "5050:80"
+        networks:
+            - postgres
+        restart: unless-stopped
+        volumes:
+            - pgadmin:/var/lib/EmployeeManagementSystem-Backend
+networks:
+    postgres:
+        driver: bridge
+volumes:
+  postgres:
+  pgadmin:

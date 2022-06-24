@@ -1,0 +1,21 @@
+spring:
+    application:
+        name: EmployeeManagementSystem-Backend
+    datasource:
+        url: jdbc:postgresql://localhost:5432/patryk
+        username: 'patryk'
+        password: 'password'
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+            format_sql: true
+    properties:
+        hibernate:
+        dialect: org.hibernate.dialect.PostgresSQLDialect
+        format_sql: 'true'
+    show-sql: 'true'
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: debug
